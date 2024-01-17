@@ -232,7 +232,8 @@ def select_main_filesystem_format(advanced_options: bool = False) -> disk.Filesy
 		'btrfs': disk.FilesystemType.Btrfs,
 		'ext4': disk.FilesystemType.Ext4,
 		'xfs': disk.FilesystemType.Xfs,
-		'f2fs': disk.FilesystemType.F2fs
+		'f2fs': disk.FilesystemType.F2fs,
+		'bcachefs': disk.FilesystemType.Bcachefs
 	}
 
 	if advanced_options:
