@@ -205,8 +205,7 @@ class DeviceHandler(object):
 
 		match fs_type:
 			case FilesystemType.Bcachefs:
-				options += ['format']
-				command += 'bcachefs'
+				options.append('format')
 			case FilesystemType.Btrfs | FilesystemType.F2fs | FilesystemType.Xfs:
 				# Force overwrite
 				options.append('-f')
