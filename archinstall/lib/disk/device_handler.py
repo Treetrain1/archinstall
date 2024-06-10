@@ -202,9 +202,11 @@ class DeviceHandler(object):
 	):
 		mkfs_type = fs_type.value
 		options = []
+		command = f'mkfs.{mkfs_type}'
 
 		match fs_type:
 			case FilesystemType.Bcachefs:
+				command = 'bcachefs'
 				options.append('format')
 			case FilesystemType.Btrfs | FilesystemType.F2fs | FilesystemType.Xfs:
 				# Force overwrite
@@ -224,7 +226,7 @@ class DeviceHandler(object):
 			case _:
 				raise UnknownFilesystemFormat(f'Filetype "{fs_type.value}" is not supported')
 
-		cmd = [f'mkfs.{mkfs_type}', *options, *additional_parted_options, str(path)]
+		cmd = [command, *options, *additional_parted_options, str(path)]
 
 		debug('Formatting filesystem:', ' '.join(cmd))
 
